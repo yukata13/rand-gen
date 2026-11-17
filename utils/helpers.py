@@ -2,10 +2,30 @@
 
 from typing import Union, Callable
 
-from randomgen.generators.timestamp_generator import TimestampRandomGenerator
-from randomgen.generators.clock_generator import ClockCycleRandomGenerator
+# Import from sibling generators package using relative path
+import sys
+import os
+
+def _get_generators_module():
+    """Get the generators module from installed package location."""
+    # Find where this file is located
+    utils_dir = os.path.dirname(__file__)
+    
+    # Try to import from installed package first (editable install)
+    try:
+        from randomgen.generators.timestamp_generator import TimestampRandomGenerator
+        from randomgen.generators.clock_generator import ClockCycleRandomGenerator
+        return TimestampRandomGenerator, ClockCycleRandomGenerator
+    except ImportError:
+        # Fallback: use sibling directory
+        generators_dir = os.path.dirname(os.path.dirname(utils_dir))
+        sys.path.insert(0, generators_dir)
+        from generators.timestamp_generator import TimestampRandomGenerator
+        from generators.clock_generator import ClockCycleRandomGenerator
+        return TimestampRandomGenerator, ClockCycleRandomGenerator
 
 
+TimestampRandomGenerator, ClockCycleRandomGenerator = _get_generators_module()
 def generate_random(
     max_value: int = 100, 
     min_value: int = 0,

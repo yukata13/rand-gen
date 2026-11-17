@@ -1,6 +1,6 @@
 """Timestamp-based random number generator."""
 
-from randomgen.generators.base import BaseRandomGenerator
+from .base import BaseRandomGenerator
 
 
 class TimestampRandomGenerator(BaseRandomGenerator):

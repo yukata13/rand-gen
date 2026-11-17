@@ -2,11 +2,11 @@
 
 import unittest
 
-from randomgen.generators import (
+from generators import (
     TimestampRandomGenerator,
     ClockCycleRandomGenerator,
 )
-from randomgen.utils import (
+from utils import (
     generate_random,
     generate_random_float,
     generate_random_clock,
@@ -105,12 +105,12 @@ class TestModuleImports(unittest.TestCase):
     """Tests verifying module exports."""
 
     def test_import_both_generators(self):
-        from randomgen import TimestampRandomGenerator, ClockCycleRandomGenerator
+        from generators import TimestampRandomGenerator, ClockCycleRandomGenerator
         self.assertIsInstance(TimestampRandomGenerator, type)
         self.assertIsInstance(ClockCycleRandomGenerator, type)
 
     def test_convenience_functions_callable(self):
-        from randomgen import generate_random, generate_random_float
+        from utils import generate_random, generate_random_float
         self.assertTrue(callable(generate_random))
         self.assertTrue(callable(generate_random_float))
 

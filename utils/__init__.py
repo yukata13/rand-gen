@@ -1,6 +1,6 @@
 """Convenience functions for random number generation."""
 
-from randomgen.utils.helpers import (
+from .helpers import (
     generate_random,
     generate_random_float,
     generate_random_clock,
