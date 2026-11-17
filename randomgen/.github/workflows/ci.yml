@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }} - Test
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          # Create requirements for testing
+          echo "requests>=2.28.0" > requirements.txt
+          pip install -r requirements.txt
+          pip install -e .[dev] || pip install -e .
+
+      - name: Run tests
+        run: |
+          cd tests
+          python -m unittest discover
+
+      - name: Code coverage (optional)
+        if: matrix.python-version == '3.11'
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella

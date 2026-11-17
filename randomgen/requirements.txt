@@ -1,0 +1,7 @@
+# Timestamp Random Generator - Dependencies
+# No external dependencies required for core functionality
+# Add testing/dev dependencies as needed:
+# pytest>=7.0
+# pytest-cov>=4.0
+# black>=22.0
+# flake8>=5.0
