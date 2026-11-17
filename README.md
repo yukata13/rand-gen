@@ -34,7 +34,7 @@ python -m pip install -e .
 ### Basic Usage
 
 ```python
-from randomgen import TimestampRandomGenerator, ClockCycleRandomGenerator
+from generators import TimestampRandomGenerator, ClockCycleRandomGenerator
 
 # Using timestamp-based generator (default)
 ts_gen = TimestampRandomGenerator(max_value=100, min_value=0)
@@ -50,7 +50,7 @@ print(clock_number)
 ### Convenience Functions
 
 ```python
-from randomgen import generate_random, generate_random_float, generate_random_clock
+from generators import generate_random, generate_random_float, generate_random_clock
 
 # Quick integer generation
 num = generate_random(50)  # Returns int between 0-49

@@ -1,27 +1,24 @@
-"""Timestamp Random Generator Library
+"""
+RandomGen - A library for generating pseudo-random numbers.
 
-A simple Python library that generates random numbers based on system timestamps.
-Uses SHA-256 hashing to convert timestamp data into pseudo-random values.
+This package provides multiple random number generation strategies:
+- Timestamp-based generator (wall-clock time entropy)
+- Clock cycle-based generator (CPU cycle counter entropy)
 
-Architecture:
-├── generators/      - Contains all generator classes (timestamp, clock, base)
-├── utils/           - Convenience functions for quick usage
-└── tests/           - Unit test suite
+Usage examples:
+    from randomgen import TimestampRandomGenerator, ClockCycleRandomGenerator
+    gen = TimestampRandomGenerator()
+    num = gen.randint()
 
-Usage:
-    from randomgen import TimestampRandomGenerator, generate_random
-    
-    gen = TimestampRandomGenerator(max_value=100)
-    number = gen.randint()  # Random integer 0-99
-    
-    # Or use convenience functions:
-    num = generate_random(50)      # Random int 0-49
-    float_num = generate_random_float()  # Random float 0-1
+Module-level convenience functions:
+    from randomgen import generate_random, generate_random_float
+    num = generate_random(100)  # Returns int between 0-99
 """
 
-# Re-export public API from generators and utils modules
-from randomgen.generators import TimestampRandomGenerator, ClockCycleRandomGenerator
-from randomgen.utils import (
+# Import and expose public API
+from .generators.timestamp_generator import TimestampRandomGenerator
+from .generators.clock_generator import ClockCycleRandomGenerator
+from .utils.helpers import (
     generate_random,
     generate_random_float,
     generate_random_clock,

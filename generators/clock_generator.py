@@ -2,7 +2,7 @@
 
 import time
 
-from randomgen.generators.base import BaseRandomGenerator
+from .base import BaseRandomGenerator
 
 
 class ClockCycleRandomGenerator(BaseRandomGenerator):
