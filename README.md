@@ -1,10 +1,12 @@
 # Timestamp Random Generator Library 🎲
 
+This is a personal learning project for using local llms with VsCode; Almost all of the code here are written by AI:
+
 A lightweight Python library that generates pseudo-random numbers using system timestamps and CPU clock cycles as entropy sources. Uses SHA-256 hashing to convert time-based data into high-quality random values.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python Version](https://img.shields.io/pypi/pyversions/randomgen?color=blue)](#)
-[![Tests](https://github.com/yukata13/randomgen/actions/workflows/ci.yml/badge.svg)](#)
+This
+> 🤖 **Developed with Cline + Ollama + Qwen3.5:9b**
 
 ## ✨ Features
 
@@ -16,25 +18,30 @@ A lightweight Python library that generates pseudo-random numbers using system t
 
 ## 🚀 Quick Start
 
-### Installation
+### Installation (Local Only - Not on PyPI)
+
+**⚠️ This package is NOT published on PyPI. Install from source directly:**
+
+Clone from the GitHub repository:
 
 ```bash
-pip install randomgen
-# Or add to requirements.txt: randomgen>=0.1.0
-```
-
-Or clone directly:
-
-```bash
-git clone https://github.com/yukata13/randomgen.git
-cd randomgen
+git clone https://github.com/yukata13/rand-gen.git
+cd rand-gen
 python -m pip install -e .
 ```
+
+Or install from your local path in another project:
+
+```bash
+pip install -e /path/to/rand-gen
+```
+
+Note: The `pip install -e .` creates an editable installation that uses the files directly from your cloned repository. No PyPI download is involved.
 
 ### Basic Usage
 
 ```python
-from generators import TimestampRandomGenerator, ClockCycleRandomGenerator
+from randomgen import TimestampRandomGenerator, ClockCycleRandomGenerator
 
 # Using timestamp-based generator (default)
 ts_gen = TimestampRandomGenerator(max_value=100, min_value=0)
@@ -50,7 +57,7 @@ print(clock_number)
 ### Convenience Functions
 
 ```python
-from generators import generate_random, generate_random_float, generate_random_clock
+from randomgen import generate_random, generate_random_float, generate_random_clock
 
 # Quick integer generation
 num = generate_random(50)  # Returns int between 0-49

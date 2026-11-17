@@ -12,7 +12,7 @@ Please be respectful and professional in all interactions. We welcome diverse co
 
 ```bash
 # Clone the repository
-git clone https://github.com/yukata13/randomgen.git
+git clone https://github.com/yukata13/rand-gen.git
 cd randomgen
 
 # Create a virtual environment
